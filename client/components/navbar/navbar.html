@@ -1,0 +1,39 @@
+<div id="nav" class="navbar-material-green-300 navbar" ng-controller="NavbarCtrl">
+
+    <div class="navbar-header">
+      <button class="navbar-toggle" type="button" ng-click="isCollapsed = !isCollapsed">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- <div class="nav navbar-nav navbar-left" style="width: 50%">
+        <img src="/assets/images/logo2.png" alt="League-Manager logo" height="70px" width="90px" text-align="left"  border="0" alt="Null">
+          <a href="/" class="navbar-brand" ></a>
+      </div> -->
+
+    </div>
+
+    <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
+      <ul class="nav navbar-nav navbar-left">
+        <li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}"><a ng-href="{{item.link}}">{{item.title}}</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li ng-show="isAdmin()"style="color: black" ng-class="{active: isActive('/admin')}"><a href="/admin">Admin</a></li> -->
+        <li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}"><a id= "poop" href="/admin">
+          <button type="button" class="btn btn-default btn-xs">
+            <span class="glyphicon glyphicon-user"></span> Admin
+          </button></a>
+        </li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
+        <li ng-hide="isLoggedIn()" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
+        <li ng-show="isLoggedIn()"class="navbar-text">Welcome Back: {{ getCurrentUser().name }} </li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"style="color: black "></span></a></li>
+        <li ng-show="isLoggedIn()" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()"style="color: black">Logout</a></li>
+      </ul>
+    </div>
+
+
+</div>
